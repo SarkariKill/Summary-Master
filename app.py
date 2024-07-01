@@ -208,7 +208,7 @@ elif selected_page == "Text Summary":
     
        if test_image_camera:
          image = Image.open(test_image_camera)
-         image_text = extract_text_from_image(test_image_camera)
+         image_text = extract_text_from_image(image)
          response = model.generate_content("""Please provide a detailed overview or summary of the given paragraph in 500-600 words. 
                                            Ensure the summary is comprehensive, organized into points and paragraphs, and includes 
                                            proper headings and subheadings. Format the response in markdown so it can be displayed 
@@ -219,7 +219,7 @@ elif selected_page == "Text Summary":
         
        elif test_image_upload:
          image = Image.open(test_image_upload)
-         image_text = tess.image_to_string(image)
+         image_text = extract_text_from_image(image)
          response = model.generate_content("""Please provide a detailed overview or summary of the given paragraph in 500-600 words. 
                                            Ensure the summary is comprehensive, organized into points and paragraphs, and includes 
                                            proper headings and subheadings. Format the response in markdown so it can be displayed 
