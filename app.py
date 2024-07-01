@@ -4,6 +4,8 @@ from youtube_transcript_api import YouTubeTranscriptApi
 import pytesseract as tess
 from PIL import Image
 from streamlit_lottie import st_lottie 
+# New Commit
+import io
 
 import google.generativeai as genai
 
@@ -187,10 +189,18 @@ elif selected_page == "Text Summary":
     - An image of a book page with a paragraph.
     - A photo of a printed document with text.
     """)
+    # New Commit
     def extract_text_from_image(image):
-       text = tess.image_to_string(image)
-       return text
-
+        # Check if image is from camera input
+        if isinstance(image, bytes):
+            # Convert bytes to PIL image
+            image = Image.open(io.BytesIO(image))
+        elif isinstance(image, str):
+             # Assume string is a file path, open as PIL image
+            image = Image.open(image)
+            # Perform OCR using pytesseract
+    text = tess.image_to_string(image)
+    return text
     # Camera Input
     test_image_camera = st.camera_input("Take a Picture")
     # File Input
