@@ -199,8 +199,8 @@ elif selected_page == "Text Summary":
              # Assume string is a file path, open as PIL image
             image = Image.open(image)
             # Perform OCR using pytesseract
-    text = tess.image_to_string(image)
-    return text
+        text = tess.image_to_string(image)
+        return text
     # Camera Input
     test_image_camera = st.camera_input("Take a Picture")
     # File Input
