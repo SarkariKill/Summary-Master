@@ -21,3 +21,6 @@ Welcome to Summary Master, an application designed to help you summarize text fr
 1. **Paste YouTube Link**: Enter the link of the YouTube video you want to summarize.
 2. **Fetch Transcript**: The app retrieves the transcript of the video.
 3. **Generate Summary**: A comprehensive summary of the video's content is generated, making it easier to understand key points and information.
+
+
+Check out the live project at: https://summary-master.streamlit.app/
