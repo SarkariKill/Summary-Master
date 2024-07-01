@@ -1,7 +1,7 @@
 import json
 import streamlit as st
 from youtube_transcript_api import YouTubeTranscriptApi
-import pytesseract as tess
+import pytesseract
 from PIL import Image
 from streamlit_lottie import st_lottie 
 
@@ -18,6 +18,9 @@ genai.configure(api_key=os.environ['GOOGLE_API_KEY'])
 ## Yeh Rha Hamara Gpt Model
 model = genai.GenerativeModel('gemini-pro')
 print(model)
+
+# Ensure the Tesseract executable path is set
+pytesseract.pytesseract.tesseract_cmd = '/usr/bin/tesseract'
 
 # Navigation Bar
 # Define the navigation options
@@ -188,7 +191,7 @@ elif selected_page == "Text Summary":
     - A photo of a printed document with text.
     """)
     def extract_text_from_image(image):
-       text = tess.image_to_string(image)
+       text = pytesseract.image_to_string(image)
        return text
 
     # Camera Input
