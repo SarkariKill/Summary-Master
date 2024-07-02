@@ -219,7 +219,7 @@ elif selected_page == "Text Summary":
                                            proper headings and subheadings. Format the response in markdown so it can be displayed 
                                            on my website. The paragraph is appended here: """+image_text)
              text = response._result.candidates[0].content.parts[0].text
-         st.markdown(text)
+             st.markdown(text)
     
         
        elif test_image_upload:
@@ -231,7 +231,7 @@ elif selected_page == "Text Summary":
                                            proper headings and subheadings. Format the response in markdown so it can be displayed 
                                            on my website. The paragraph is appended here: """+image_text)
              text = response._result.candidates[0].content.parts[0].text
-         st.markdown(text)
+             st.markdown(text)
          
  # Footer Jisme Insta, Github and Linkdin hai        
 
