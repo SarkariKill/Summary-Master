@@ -51,7 +51,7 @@ if selected_page == "Home":
             }
         </style>
     """, unsafe_allow_html=True)
-    st.markdown("<h1 class='title'>Summary Master Sex</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 class='title'>Summary Master</h1>", unsafe_allow_html=True)
     #Lottie
     lottie_scanner = load_lottiefile("Lottie/home page.json")
     st_lottie(
