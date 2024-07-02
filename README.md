@@ -23,4 +23,7 @@ Welcome to Summary Master, an application designed to help you summarize text fr
 3. **Generate Summary**: A comprehensive summary of the video's content is generated, making it easier to understand key points and information.
 
 
-Check out the live project at: https://summary-master.streamlit.app/
+Check out the live project at: https://summary-master-boss.streamlit.app
+                                                  or
+                                https://summary-master-god.onrender.com
+                                    
