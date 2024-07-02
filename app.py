@@ -4,6 +4,7 @@ from youtube_transcript_api import YouTubeTranscriptApi
 import pytesseract
 from PIL import Image
 from streamlit_lottie import st_lottie 
+import time
 
 import google.generativeai as genai
 
@@ -150,16 +151,16 @@ elif selected_page == "Video Summary":
                   # Fetch the transcript
                   transcript = YouTubeTranscriptApi.get_transcript(video_id)
                   # Combine transcript text
-                  Sex = "Higher Studies"
-                  result = ""
-                  for i in transcript:
-                    result += ' ' + i['text']
+                  with st.spinner('Please wait...'):
+                    result = ""
+                    for i in transcript:
+                      result += ' ' + i['text']
                     
                   
-                  response = model.generate_content("""Give the detail overview or summary of the transcript in 1000-1500 words in detail in points and paragraphs 
+                    response = model.generate_content("""Give the detail overview or summary of the transcript in 1000-1500 words in detail in points and paragraphs 
                                                     with proper headings and subheading kindly diplay t also so write it required in a proper markdown  
                                                     format so I can diplay it on my website. This transcript is appended here: """+result)
-                  text = response._result.candidates[0].content.parts[0].text
+                    text = response._result.candidates[0].content.parts[0].text
                   st.markdown(text)
 
                   
@@ -208,26 +209,28 @@ elif selected_page == "Text Summary":
             st.write("Please capture an image or upload a file first.")
 
     if st.button("Summarize"):
-    
+      
        if test_image_camera:
-         image = Image.open(test_image_camera)
-         image_text = extract_text_from_image(image)
-         response = model.generate_content("""Please provide a detailed overview or summary of the given paragraph in 500-600 words. 
+           with st.spinner('Please wait...'):
+             image = Image.open(test_image_camera)
+             image_text = extract_text_from_image(image)
+             response = model.generate_content("""Please provide a detailed overview or summary of the given paragraph in 500-600 words. 
                                            Ensure the summary is comprehensive, organized into points and paragraphs, and includes 
                                            proper headings and subheadings. Format the response in markdown so it can be displayed 
                                            on my website. The paragraph is appended here: """+image_text)
-         text = response._result.candidates[0].content.parts[0].text
+             text = response._result.candidates[0].content.parts[0].text
          st.markdown(text)
     
         
        elif test_image_upload:
-         image = Image.open(test_image_upload)
-         image_text = extract_text_from_image(image)
-         response = model.generate_content("""Please provide a detailed overview or summary of the given paragraph in 500-600 words. 
+           with st.spinner('Please wait...'):
+             image = Image.open(test_image_upload)
+             image_text = extract_text_from_image(image)
+             response = model.generate_content("""Please provide a detailed overview or summary of the given paragraph in 500-600 words. 
                                            Ensure the summary is comprehensive, organized into points and paragraphs, and includes 
                                            proper headings and subheadings. Format the response in markdown so it can be displayed 
                                            on my website. The paragraph is appended here: """+image_text)
-         text = response._result.candidates[0].content.parts[0].text
+             text = response._result.candidates[0].content.parts[0].text
          st.markdown(text)
          
  # Footer Jisme Insta, Github and Linkdin hai        
